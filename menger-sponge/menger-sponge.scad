@@ -55,22 +55,11 @@ module menger_sponge(level=1) {
     }
 }
 
-module _rotate(rot_x, rot_y, rot_z) {
-    rotate(a=[rot_x, rot_y, rot_z])
-    translate([-0.5, -0.5, -0.5])
-    children();
-}
-
-//  [?] Can you pick the transformation (e.g. `projection()`)
-//      conditionally?
-//      Something like "(bool ? translate() : rotate()) cube();"?
-if (render_cross_section) {
-    projection(cut = true)
-    _rotate(rot_x, rot_y, rot_z)
-    menger_sponge(level=level);
-}
-else {
-    _rotate(rot_x, rot_y, rot_z)
-    menger_sponge(level=level);
-}
+rotate(a=[rot_x, rot_y, rot_z])
+translate([-0.5, -0.5, -0.5])
+menger_sponge(
+    level = level,
+    filled = start_inverse ? 0 : 1,
+    flip = flip_to_inverse_between_levels
+);
 
