@@ -1,7 +1,7 @@
 /* [Sponge] */
 
 //  Type of sponge
-sponge_type = 0;    // [0:Menger sponge,1:diagonal]
+sponge_type = 0;    // [0:#0 - Menger sponge,1:#1 - diagonal,2:#2 - pyramid00,3:#3 - pyramid01,4:#4 - pyramid10,5:#5 - pyramid11]
 
 //  Level of sponge
 level = 1;          //  [0:8]
@@ -84,14 +84,89 @@ diagonal_bitmap = [
     ],
 ];
 
+pyramid00_bitmap = [
+    [
+        [ 0, 0, 0 ],
+        [ 0, 0, 0 ],
+        [ 1, 0, 0 ],
+    ],
+    [
+        [ 0, 0, 0 ],
+        [ 1, 1, 0 ],
+        [ 1, 1, 0 ],
+    ],
+    [
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+    ],
+];
+
+pyramid01_bitmap = [
+    [
+        [ 1, 0, 0 ],
+        [ 0, 0, 0 ],
+        [ 0, 0, 0 ],
+    ],
+    [
+        [ 1, 1, 0 ],
+        [ 1, 1, 0 ],
+        [ 0, 0, 0 ],
+    ],
+    [
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+    ],
+];
+
+pyramid10_bitmap = [
+    [
+        [ 0, 0, 0 ],
+        [ 0, 0, 0 ],
+        [ 0, 0, 1 ],
+    ],
+    [
+        [ 0, 0, 0 ],
+        [ 0, 1, 1 ],
+        [ 0, 1, 1 ],
+    ],
+    [
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+    ],
+];
+
+pyramid11_bitmap = [
+    [
+        [ 0, 0, 1 ],
+        [ 0, 0, 0 ],
+        [ 0, 0, 0 ],
+    ],
+    [
+        [ 0, 1, 1 ],
+        [ 0, 1, 1 ],
+        [ 0, 0, 0 ],
+    ],
+    [
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+        [ 1, 1, 1 ],
+    ],
+];
+
 //  All the bitmaps
 //
 //  NOTE:   Make sure the order in the customizer dropdown (see top
 //          of this file) aligns with the below order or bitmaps.
-
 bitmaps = [
     menger_bitmap,
     diagonal_bitmap,
+    pyramid00_bitmap,
+    pyramid01_bitmap,
+    pyramid10_bitmap,
+    pyramid11_bitmap,
 ];
 
 //  Number of bitmaps
