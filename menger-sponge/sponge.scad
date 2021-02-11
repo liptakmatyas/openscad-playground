@@ -12,6 +12,9 @@ start_inverse = false;
 //  Flip normal/inverse between levels?
 flip_to_inverse_between_levels = false;
 
+//  Center on origin?
+center = false;
+
 /* [Rotation] */
 
 //  Rotation around the X axis (angles)
@@ -117,6 +120,9 @@ module sponge(type=0, level=1, filled=1, flip=false) {
     }
 }
 
+//  The sponge is 1x1x1 in size
+translation = center ? [-0.5, -0.5, -0.5] : [0,0,0];
+
 //  Log debugging info to console
 
 echo("========================================");
@@ -136,10 +142,11 @@ echo("flip to inverse between levels", flip_to_inverse_between_levels);
 echo("----------------------------------------");
 
 echo("X/Y/Z rotation:", rot_x, rot_y, rot_z);
+echo("center", center);
 
-//  Render sponge, then center and rotate
+//  Render sponge
 rotate(a=[rot_x, rot_y, rot_z])
-translate([-0.5, -0.5, -0.5])   //  The sponge is 1x1x1 in size
+translate(translation)
 sponge(
     type = sponge_type,
     level = level,
