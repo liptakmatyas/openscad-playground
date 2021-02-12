@@ -3,6 +3,9 @@
 //  Type of sponge
 sponge_type = 0;    // [0:#0 - Menger sponge,1:#1 - diagonal,2:#2 - pyramid00,3:#3 - pyramid01,4:#4 - pyramid10,5:#5 - pyramid11]
 
+//  NOTE:   The original Menger sponge has 20^L cubes, where L is the
+//          level. So, on level 8, we have 20^8 = 25600000000 cubes.
+//
 //  Level of sponge
 level = 1;          //  [0:8]
 
@@ -15,8 +18,13 @@ flip_to_inverse_between_levels = false;
 //  Rotate sponge types between levels? If this is ON, then the sponge type above has no effect, and the sponge pattern below is used instead.
 rotate_type_between_levels = false;
 
+//  NOTE:   The range for this needs to be kept in sync with the
+//          number of sponge types. Unfortunately, I don't know of
+//          any way to do this dynamically, the comment needs to be
+//          updated manually...
+//
 //  Rotate between these sponges:
-sponge_pattern = [0, 0, 0, 0];  // [0:6]
+sponge_pattern = [0, 0, 0, 0];  // [0:5]
 
 /* [Position and Rotation] */
 
@@ -188,7 +196,7 @@ module sponge(type=0, level=1, filled=1, flip=false, rotate_type=false) {
             ? sponge_pattern[(level-1) % len(sponge_pattern)]
             : type;
         assert(0 <= this_type && this_type < n_bitmaps,
-            concat("Invalid sponge type: ", str(this_type)));
+            str("Invalid sponge type: ", this_type));
 
         //  Level 1 and above, render the voxels out of
         //  third-sized sponges one level lower.
